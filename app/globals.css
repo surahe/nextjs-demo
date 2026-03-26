@@ -5,11 +5,78 @@
   --foreground: #171717;
 }
 
-@theme inline {
+/**
+ * @theme
+ * 定义主题变量，工具类引用变量，便于覆盖
+ * 
+ * 生成的工具类会引用变量，如 bg-primary 使用 var(--color-primary)。
+ *
+ * 在 :root 或深色模式里覆盖即可切换主题。
+ */
+
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+}
+
+/**
+ * @theme inline
+ * 内联主题变量，工具类直接写死值
+ * 
+ * 适合透传已有变量或固定值，生成类会把值直接写死，后续覆盖不会影响这些类。
+ */
+@theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+/**
+ * @layer指令
+ * 把样式分层，控制优先级与覆盖顺序
+ * 
+ * 顺序为 base → components → utilities，后者会覆盖前者。
+ * 
+ * 适合分别放全局标签、组件样式与小工具类。
+ */
+
+@layer base {
+  h1 { font-size: var(--text-2xl); }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+}
+
+/**
+ * @apply
+ * 常用于提取重复的工具类组合
+ * 
+ * 它只是 CSS 的宏替换，不会生成新的工具类（除非你把它包在 @utility 里）。
+ */
+
+.btn {
+  @apply px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600;
+}
+
+/* 
+ * @utility
+ * 指令
+ * Tailwind 会自动为它生成 hover:、focus:、md: 等变体，并支持按需打包
+ */
+@utility badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  font-size: var(--text-xs);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +86,4 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+
