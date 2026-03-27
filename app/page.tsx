@@ -1,4 +1,26 @@
 import Image from "next/image";
+import Link from "next/link";
+
+const demos = [
+  {
+    href: "/suspense",
+    label: "Suspense 演示",
+    desc: "React Suspense + 异步组件",
+    color: "bg-sky-500",
+  },
+  {
+    href: "/tailwind-directives",
+    label: "Tailwind v4 指令",
+    desc: "@import / @theme / @utility 等",
+    color: "bg-teal-500",
+  },
+  {
+    href: "/parallel-intercept",
+    label: "并行路由 & 拦截路由",
+    desc: "@slot 命名插槽 + 模态拦截",
+    color: "bg-violet-500",
+  },
+];
 
 export default function Home() {
   return (
@@ -33,6 +55,25 @@ export default function Home() {
             </a>{" "}
             center.
           </p>
+
+          <div className="flex w-full flex-col gap-3 pt-2">
+            <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-400">演示页面</p>
+            {demos.map((demo) => (
+              <Link
+                key={demo.href}
+                href={demo.href}
+                className="flex items-center gap-3 rounded-xl border border-zinc-100 bg-zinc-50 px-4 py-3 transition-colors hover:border-zinc-200 hover:bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700 dark:hover:bg-zinc-800"
+              >
+                <span className={`flex size-8 shrink-0 items-center justify-center rounded-lg text-white text-xs ${demo.color}`}>
+                  →
+                </span>
+                <div>
+                  <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100">{demo.label}</div>
+                  <div className="text-xs text-zinc-400">{demo.desc}</div>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
         <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
           <a
