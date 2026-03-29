@@ -55,6 +55,17 @@ export default function Home() {
                                     layout · template · error · loading · not-found · page
                                 </span>
                             </Link>
+                            <Link
+                                href="/server-client"
+                                className="flex flex-col gap-1 rounded-xl border border-sky-200 bg-sky-50 px-5 py-4 transition-colors hover:bg-sky-100 dark:border-sky-800 dark:bg-sky-950 dark:hover:bg-sky-900"
+                            >
+                                <span className="font-semibold text-sky-800 dark:text-sky-200">
+                                    Server 和 Client 组件 →
+                                </span>
+                                <span className="text-xs text-sky-700 dark:text-sky-400">
+                                    表单与表格 · 服务端初始化 · 客户端交互与请求
+                                </span>
+                            </Link>
                         </div>
                     </section>
                 </div>
