@@ -68,6 +68,24 @@ export default function Home() {
                             </Link>
                         </div>
                     </section>
+                    <section className={sectionClass}>
+                        <p className="mb-3 text-sm font-medium tracking-wide text-zinc-500 uppercase">
+                            第三方库 Demo
+                        </p>
+                        <div className="flex flex-col gap-3 sm:flex-row">
+                            <Link
+                                href="/zustand"
+                                className="flex flex-col gap-1 rounded-xl border border-rose-200 bg-rose-50 px-5 py-4 transition-colors hover:bg-rose-100 dark:border-rose-800 dark:bg-rose-950 dark:hover:bg-rose-900"
+                            >
+                                <span className="font-semibold text-rose-800 dark:text-rose-200">
+                                    Zustand 状态管理 →
+                                </span>
+                                <span className="text-xs text-rose-600 dark:text-rose-400">
+                                    useShallow · immer · persist · devtools · global state
+                                </span>
+                            </Link>
+                        </div>
+                    </section>
                 </div>
             </main>
         </div>

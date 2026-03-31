@@ -10,7 +10,6 @@ node_modules/
 # 自动生成文件 
 next-env.d.ts 
 tsconfig.tsbuildinfo 
-pnpm-lock.yaml 
 
 # 静态资源与缓存
 public/

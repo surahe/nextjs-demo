@@ -9,4 +9,14 @@ export const ENV = {
      * 登录凭证的 Cookie 名称
      */
     TOKEN_COOKIE_NAME: process.env.NEXT_PUBLIC_TOKEN_COOKIE ?? HEADERS.TOKEN_COOKIE_NAME,
+
+    /**
+     * 当前运行环境
+     */
+    NODE_ENV: process.env.NODE_ENV || 'development',
+    
+    /**
+     * 是否为生产环境
+     */
+    IS_PRODUCTION: process.env.NODE_ENV === 'production',
 } as const;
