@@ -25,10 +25,7 @@ export default function FileStructureLoading() {
                 <div className="h-4 w-1/2 rounded bg-yellow-200 dark:bg-yellow-800" />
                 <div className="mt-4 grid grid-cols-3 gap-3">
                     {[1, 2, 3].map((i) => (
-                        <div
-                            key={i}
-                            className="h-20 rounded-xl bg-yellow-200 dark:bg-yellow-800"
-                        />
+                        <div key={i} className="h-20 rounded-xl bg-yellow-200 dark:bg-yellow-800" />
                     ))}
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
 
 /**
  * 捕获所有未匹配的 /file-structure/* 路径，

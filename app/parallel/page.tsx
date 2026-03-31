@@ -34,12 +34,8 @@ export default function ParallelPage() {
                 隐式插槽：children（对应 app/parallel/page.tsx）
             </div>
 
-            <h2 className="mb-1 text-2xl font-bold text-zinc-800 dark:text-zinc-100">
-                最新文章
-            </h2>
-            <p className="mb-6 text-sm text-zinc-500">
-                主内容区，每篇文章独立渲染
-            </p>
+            <h2 className="mb-1 text-2xl font-bold text-zinc-800 dark:text-zinc-100">最新文章</h2>
+            <p className="mb-6 text-sm text-zinc-500">主内容区，每篇文章独立渲染</p>
 
             <div className="space-y-3">
                 {posts.map((post) => (
@@ -55,9 +51,7 @@ export default function ParallelPage() {
                                 {post.views.toLocaleString()} 阅读
                             </span>
                         </div>
-                        <p className="mt-1 text-xs text-zinc-400">
-                            {post.date}
-                        </p>
+                        <p className="mt-1 text-xs text-zinc-400">{post.date}</p>
                     </div>
                 ))}
             </div>

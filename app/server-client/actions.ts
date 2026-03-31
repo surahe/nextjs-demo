@@ -6,7 +6,7 @@ export type ServerSubmitState = {
 
 export async function serverSubmitAction(
     _prevState: ServerSubmitState,
-    formData: FormData
+    formData: FormData,
 ): Promise<ServerSubmitState> {
     await new Promise((r) => setTimeout(r, 800));
     const username = String(formData.get('username') ?? '');

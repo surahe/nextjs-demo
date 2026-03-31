@@ -86,7 +86,14 @@ function generateDataset(count = 57): TableItem[] {
 const DATASET: TableItem[] = generateDataset();
 
 export async function fetchTable(query: TableQuery): Promise<TableResult> {
-    const { page, pageSize, keyword = '', status = 'all', sortBy = 'id', sortOrder = 'asc' } = query;
+    const {
+        page,
+        pageSize,
+        keyword = '',
+        status = 'all',
+        sortBy = 'id',
+        sortOrder = 'asc',
+    } = query;
     await delay({ ms: 700 });
     const kw = keyword.trim();
     let data = DATASET;

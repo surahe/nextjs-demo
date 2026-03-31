@@ -1,12 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import type {
-    FormInitData,
-    TableResult,
-    TableQuery,
-    Status,
-} from './mock';
+import type { FormInitData, TableResult, TableQuery, Status } from './mock';
 import { fetchTable, updateItemStatus } from './mock';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import FormClient from './components/form-client';
@@ -28,19 +23,24 @@ type Props = {
     };
 };
 
-export default function ServerClientClient({ initialForm, initialTable, initialTab = 'table', initialQuery }: Props) {
+export default function ServerClientClient({
+    initialForm,
+    initialTable,
+    initialTab = 'table',
+    initialQuery,
+}: Props) {
     const [activeTab, setActiveTab] = useState<'table' | 'form'>(initialTab);
     return (
         <div className="rounded-lg border p-4">
             <div className="mb-4 flex gap-2">
                 <button
-                    className={`px-4 py-2 rounded border ${activeTab === 'table' ? 'bg-sky-600 text-white border-sky-700' : 'bg-white text-sky-700 border-sky-200'}`}
+                    className={`rounded border px-4 py-2 ${activeTab === 'table' ? 'border-sky-700 bg-sky-600 text-white' : 'border-sky-200 bg-white text-sky-700'}`}
                     onClick={() => setActiveTab('table')}
                 >
                     表格
                 </button>
                 <button
-                    className={`px-4 py-2 rounded border ${activeTab === 'form' ? 'bg-emerald-600 text-white border-emerald-700' : 'bg-white text-emerald-700 border-emerald-200'}`}
+                    className={`rounded border px-4 py-2 ${activeTab === 'form' ? 'border-emerald-700 bg-emerald-600 text-white' : 'border-emerald-200 bg-white text-emerald-700'}`}
                     onClick={() => setActiveTab('form')}
                 >
                     表单
@@ -69,7 +69,9 @@ function TableTab({
     const [page, setPage] = useState(initialQuery?.page ?? initial.page);
     const [pageSize, setPageSize] = useState(initialQuery?.pageSize ?? initial.pageSize);
     const [keyword, setKeyword] = useState(initialQuery?.keyword ?? '');
-    const [status, setStatus] = useState<'all' | 'active' | 'inactive'>(initialQuery?.status ?? 'all');
+    const [status, setStatus] = useState<'all' | 'active' | 'inactive'>(
+        initialQuery?.status ?? 'all',
+    );
     const [sortBy, setSortBy] = useState<'id' | 'name'>(initialQuery?.sortBy ?? 'id');
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>(initialQuery?.sortOrder ?? 'asc');
     const [data, setData] = useState<TableResult>(initial);
@@ -77,7 +79,7 @@ function TableTab({
 
     const totalPages = useMemo(
         () => Math.max(1, Math.ceil(data.total / data.pageSize)),
-        [data.total, data.pageSize]
+        [data.total, data.pageSize],
     );
 
     async function runFetch(q: Partial<TableQuery> = {}) {
@@ -179,8 +181,21 @@ function TableTab({
 
     return (
         <div className="space-y-4">
-            <TableFilters keyword={keyword} setKeyword={setKeyword} status={status} setStatus={setStatus} onSearch={onSearch} />
-            <DataTable data={data} loading={loading} sortBy={sortBy} sortOrder={sortOrder} toggleSort={toggleSort} toggleStatus={toggleStatus} />
+            <TableFilters
+                keyword={keyword}
+                setKeyword={setKeyword}
+                status={status}
+                setStatus={setStatus}
+                onSearch={onSearch}
+            />
+            <DataTable
+                data={data}
+                loading={loading}
+                sortBy={sortBy}
+                sortOrder={sortOrder}
+                toggleSort={toggleSort}
+                toggleStatus={toggleStatus}
+            />
             <Pagination
                 page={data.page}
                 totalPages={totalPages}

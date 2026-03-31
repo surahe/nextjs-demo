@@ -1,22 +1,18 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 /**
  * template.tsx — 重挂载层（Client Component）
  * 与 layout.tsx 的关键区别：每次导航到该路由段都会重新挂载，
  * state 不保留，useEffect 重新执行。
  */
-export default function FileStructureTemplate({
-    children,
-}: {
-    children: React.ReactNode;
-}) {
-    const [mountTime, setMountTime] = useState("");
+export default function FileStructureTemplate({ children }: { children: React.ReactNode }) {
+    const [mountTime, setMountTime] = useState('');
     const [mountCount, setMountCount] = useState(0);
 
     useEffect(() => {
-        setMountTime(new Date().toLocaleTimeString("zh-CN"));
+        setMountTime(new Date().toLocaleTimeString('zh-CN'));
         setMountCount((c) => c + 1);
     }, []);
 

@@ -11,19 +11,34 @@ type Props = {
     toggleStatus: (id: number) => void;
 };
 
-export default function DataTable({ data, loading, sortBy, sortOrder, toggleSort, toggleStatus }: Props) {
+export default function DataTable({
+    data,
+    loading,
+    sortBy,
+    sortOrder,
+    toggleSort,
+    toggleStatus,
+}: Props) {
     return (
-        <div className="rounded border overflow-hidden">
+        <div className="overflow-hidden rounded border">
             <table className="w-full text-left">
                 <thead className="bg-zinc-100">
                     <tr>
                         <th className="px-4 py-2">
-                            <button className="underline underline-offset-2" onClick={() => toggleSort('id')} title="按 ID 排序">
+                            <button
+                                className="underline underline-offset-2"
+                                onClick={() => toggleSort('id')}
+                                title="按 ID 排序"
+                            >
                                 ID {sortBy === 'id' ? (sortOrder === 'asc' ? '↑' : '↓') : ''}
                             </button>
                         </th>
                         <th className="px-4 py-2">
-                            <button className="underline underline-offset-2" onClick={() => toggleSort('name')} title="按名称排序">
+                            <button
+                                className="underline underline-offset-2"
+                                onClick={() => toggleSort('name')}
+                                title="按名称排序"
+                            >
                                 名称 {sortBy === 'name' ? (sortOrder === 'asc' ? '↑' : '↓') : ''}
                             </button>
                         </th>
@@ -44,7 +59,13 @@ export default function DataTable({ data, loading, sortBy, sortOrder, toggleSort
                                 <td className="px-4 py-2">{it.id}</td>
                                 <td className="px-4 py-2">{it.name}</td>
                                 <td className="px-4 py-2">
-                                    <span className={it.status === 'active' ? 'text-emerald-700' : 'text-zinc-600'}>
+                                    <span
+                                        className={
+                                            it.status === 'active'
+                                                ? 'text-emerald-700'
+                                                : 'text-zinc-600'
+                                        }
+                                    >
                                         {it.status === 'active' ? '启用' : '停用'}
                                     </span>
                                 </td>
@@ -52,7 +73,7 @@ export default function DataTable({ data, loading, sortBy, sortOrder, toggleSort
                                     <button
                                         onClick={() => toggleStatus(it.id)}
                                         disabled={loading}
-                                        className="px-3 py-1 rounded border bg-white hover:bg-zinc-50"
+                                        className="rounded border bg-white px-3 py-1 hover:bg-zinc-50"
                                     >
                                         切换状态
                                     </button>

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 /**
  * error.tsx — ErrorBoundary fallback（必须是 Client Component）
@@ -21,9 +21,7 @@ export default function FileStructureError({
             <h2 className="mb-1 text-lg font-semibold text-red-800 dark:text-red-200">
                 ErrorBoundary 已捕获错误
             </h2>
-            <p className="mb-1 font-mono text-sm text-red-600 dark:text-red-400">
-                {error.message}
-            </p>
+            <p className="mb-1 font-mono text-sm text-red-600 dark:text-red-400">{error.message}</p>
             <p className="mb-5 text-xs text-red-500">
                 这就是 error.tsx 生效的场景 — 它是该路由段的错误兜底 UI
             </p>

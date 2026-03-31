@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 /**
  * not-found.tsx — notFound() 调用后的 fallback UI
@@ -16,7 +16,7 @@ export default function FileStructureNotFound() {
                     页面不存在
                 </h2>
                 <p className="mb-1 text-sm text-orange-600 dark:text-orange-400">
-                    路由段内调用了{" "}
+                    路由段内调用了{' '}
                     <code className="rounded bg-orange-100 px-1 dark:bg-orange-900">
                         notFound()
                     </code>

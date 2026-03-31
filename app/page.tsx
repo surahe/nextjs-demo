@@ -5,12 +5,12 @@ export default function Home() {
     const sectionClass = `mb-16 w-full max-w-2xl rounded-xl border bg-white p-6 text-left transition-shadow hover:shadow-lg dark:border-zinc-700 dark:bg-zinc-800`;
 
     return (
-        <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-            <main className="flex flex-1 w-full flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+        <div className="flex flex-1 flex-col items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+            <main className="flex w-full flex-1 flex-col items-center justify-between bg-white px-16 py-32 sm:items-start dark:bg-black">
                 {/* Demo 导航 */}
                 <div className="w-full">
                     <section className={sectionClass}>
-                        <p className="mb-3 text-sm font-medium text-zinc-500 uppercase tracking-wide">
+                        <p className="mb-3 text-sm font-medium tracking-wide text-zinc-500 uppercase">
                             路由 Demo
                         </p>
                         <div className="flex flex-col gap-3 sm:flex-row">
@@ -40,7 +40,7 @@ export default function Home() {
                     </section>
 
                     <section className={sectionClass}>
-                        <p className="mb-3 text-sm font-medium text-zinc-500 uppercase tracking-wide">
+                        <p className="mb-3 text-sm font-medium tracking-wide text-zinc-500 uppercase">
                             文件结构 Demo
                         </p>
                         <div className="flex flex-col gap-3 sm:flex-row">

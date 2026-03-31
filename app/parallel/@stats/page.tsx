@@ -20,25 +20,18 @@ export default function StatsPage() {
                 插槽：@stats
             </div>
 
-            <p className="mb-4 text-xs text-zinc-500">
-                app/parallel/@stats/page.tsx
-            </p>
+            <p className="mb-4 text-xs text-zinc-500">app/parallel/@stats/page.tsx</p>
 
             {/* 数字统计 */}
             <div className="mb-6 grid grid-cols-2 gap-2">
                 {stats.map((s) => (
-                    <div
-                        key={s.label}
-                        className="rounded-xl border p-3 dark:border-zinc-800"
-                    >
+                    <div key={s.label} className="rounded-xl border p-3 dark:border-zinc-800">
                         <p className="text-xs text-zinc-500">{s.label}</p>
                         <p className="mt-1 text-lg font-bold text-zinc-800 dark:text-zinc-100">
                             {s.value}
                         </p>
                         <span
-                            className={`text-xs font-medium ${
-                                s.up ? 'text-green-600' : 'text-red-500'
-                            }`}
+                            className={`text-xs font-medium ${s.up ? 'text-green-600' : 'text-red-500'}`}
                         >
                             {s.delta}
                         </span>
@@ -52,10 +45,7 @@ export default function StatsPage() {
             </h3>
             <div className="space-y-2">
                 {activityLog.map((log, i) => (
-                    <div
-                        key={i}
-                        className="rounded-lg border p-3 text-xs dark:border-zinc-800"
-                    >
+                    <div key={i} className="rounded-lg border p-3 text-xs dark:border-zinc-800">
                         <span className="font-medium text-zinc-800 dark:text-zinc-200">
                             {log.user}
                         </span>

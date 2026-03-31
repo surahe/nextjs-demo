@@ -16,9 +16,7 @@ export default function SidebarPage() {
                 插槽：@sidebar
             </div>
 
-            <p className="mb-4 text-xs text-zinc-500">
-                app/parallel/@sidebar/page.tsx
-            </p>
+            <p className="mb-4 text-xs text-zinc-500">app/parallel/@sidebar/page.tsx</p>
 
             <nav className="space-y-1">
                 {navItems.map((item) => (

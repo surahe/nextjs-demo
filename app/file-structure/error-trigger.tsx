@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
 /**
  * 客户端组件：按下按钮后抛出错误，由父级 error.tsx 捕获。
@@ -9,7 +9,7 @@ export default function ErrorTrigger() {
     const [shouldThrow, setShouldThrow] = useState(false);
 
     if (shouldThrow) {
-        throw new Error("手动触发的错误，已被 error.tsx 捕获！");
+        throw new Error('手动触发的错误，已被 error.tsx 捕获！');
     }
 
     return (

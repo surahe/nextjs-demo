@@ -3,13 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { PHOTOS } from '../../data';
 
-export default function PhotoModal({
-    photo,
-    id,
-}: {
-    photo: (typeof PHOTOS)[number];
-    id: string;
-}) {
+export default function PhotoModal({ photo, id }: { photo: (typeof PHOTOS)[number]; id: string }) {
     const router = useRouter();
 
     return (
@@ -25,15 +19,12 @@ export default function PhotoModal({
             <div className="relative z-10 w-full max-w-sm overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-zinc-900">
                 {/* 拦截路由标识 */}
                 <div className="border-b bg-amber-50 px-4 py-2 text-xs text-amber-700 dark:border-zinc-700 dark:bg-amber-950 dark:text-amber-300">
-                    🪄 拦截路由 — 当前 URL 已是{' '}
-                    <code className="font-mono">/photos/{id}</code>
+                    🪄 拦截路由 — 当前 URL 已是 <code className="font-mono">/photos/{id}</code>
                     ，但仍在图库页
                 </div>
 
                 {/* 图片区 */}
-                <div
-                    className={`${photo.color} flex h-48 items-center justify-center text-7xl`}
-                >
+                <div className={`${photo.color} flex h-48 items-center justify-center text-7xl`}>
                     {photo.emoji}
                 </div>
 
@@ -44,8 +35,7 @@ export default function PhotoModal({
                     </h2>
                     <p className="mt-1 text-sm text-zinc-500">Photo #{id}</p>
                     <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
-                        这是拦截路由弹窗。刷新页面或直接访问此
-                        URL，将渲染完整详情页。
+                        这是拦截路由弹窗。刷新页面或直接访问此 URL，将渲染完整详情页。
                     </p>
 
                     <div className="mt-4 flex gap-2">

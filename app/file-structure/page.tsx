@@ -1,5 +1,5 @@
-import Link from "next/link";
-import ErrorTrigger from "./error-trigger";
+import Link from 'next/link';
+import ErrorTrigger from './error-trigger';
 
 /**
  * page.tsx — 路由段叶节点
@@ -11,69 +11,69 @@ import ErrorTrigger from "./error-trigger";
 async function fetchDemoData() {
     // 模拟数据加载，触发 loading.tsx 的 Suspense fallback
     await new Promise((resolve) => setTimeout(resolve, 800));
-    return { loadedAt: new Date().toLocaleTimeString("zh-CN") };
+    return { loadedAt: new Date().toLocaleTimeString('zh-CN') };
 }
 
 const FILES = [
     {
-        name: "layout.tsx",
-        color: "purple",
-        badge: "bg-purple-500",
-        border: "border-purple-300 dark:border-purple-700",
-        bg: "bg-purple-50 dark:bg-purple-950",
-        text: "text-purple-700 dark:text-purple-300",
-        desc: "持久化包裹层，跨路由导航不重新挂载，state 保留。",
-        when: "始终存在",
+        name: 'layout.tsx',
+        color: 'purple',
+        badge: 'bg-purple-500',
+        border: 'border-purple-300 dark:border-purple-700',
+        bg: 'bg-purple-50 dark:bg-purple-950',
+        text: 'text-purple-700 dark:text-purple-300',
+        desc: '持久化包裹层，跨路由导航不重新挂载，state 保留。',
+        when: '始终存在',
     },
     {
-        name: "template.tsx",
-        color: "blue",
-        badge: "bg-blue-500",
-        border: "border-blue-300 dark:border-blue-700",
-        bg: "bg-blue-50 dark:bg-blue-950",
-        text: "text-blue-700 dark:text-blue-300",
-        desc: "每次导航重新挂载，state 重置，useEffect 重新执行。",
-        when: "始终存在，每次导航后重置",
+        name: 'template.tsx',
+        color: 'blue',
+        badge: 'bg-blue-500',
+        border: 'border-blue-300 dark:border-blue-700',
+        bg: 'bg-blue-50 dark:bg-blue-950',
+        text: 'text-blue-700 dark:text-blue-300',
+        desc: '每次导航重新挂载，state 重置，useEffect 重新执行。',
+        when: '始终存在，每次导航后重置',
     },
     {
-        name: "error.tsx",
-        color: "red",
-        badge: "bg-red-500",
-        border: "border-red-300 dark:border-red-700",
-        bg: "bg-red-50 dark:bg-red-950",
-        text: "text-red-700 dark:text-red-300",
-        desc: "ErrorBoundary fallback，必须是 Client Component。捕获子树内所有未处理错误。",
-        when: "仅在子树抛出错误时显示",
+        name: 'error.tsx',
+        color: 'red',
+        badge: 'bg-red-500',
+        border: 'border-red-300 dark:border-red-700',
+        bg: 'bg-red-50 dark:bg-red-950',
+        text: 'text-red-700 dark:text-red-300',
+        desc: 'ErrorBoundary fallback，必须是 Client Component。捕获子树内所有未处理错误。',
+        when: '仅在子树抛出错误时显示',
     },
     {
-        name: "loading.tsx",
-        color: "yellow",
-        badge: "bg-yellow-500",
-        border: "border-yellow-300 dark:border-yellow-700",
-        bg: "bg-yellow-50 dark:bg-yellow-950",
-        text: "text-yellow-700 dark:text-yellow-300",
-        desc: "Suspense fallback，导航到该路由段时 page 完成 streaming 前显示。",
-        when: "仅在页面数据加载期间显示",
+        name: 'loading.tsx',
+        color: 'yellow',
+        badge: 'bg-yellow-500',
+        border: 'border-yellow-300 dark:border-yellow-700',
+        bg: 'bg-yellow-50 dark:bg-yellow-950',
+        text: 'text-yellow-700 dark:text-yellow-300',
+        desc: 'Suspense fallback，导航到该路由段时 page 完成 streaming 前显示。',
+        when: '仅在页面数据加载期间显示',
     },
     {
-        name: "not-found.tsx",
-        color: "orange",
-        badge: "bg-orange-500",
-        border: "border-orange-300 dark:border-orange-700",
-        bg: "bg-orange-50 dark:bg-orange-950",
-        text: "text-orange-700 dark:text-orange-300",
-        desc: "调用 notFound() 后的 fallback UI，替换 page 内容渲染。",
-        when: "仅在调用 notFound() 后显示",
+        name: 'not-found.tsx',
+        color: 'orange',
+        badge: 'bg-orange-500',
+        border: 'border-orange-300 dark:border-orange-700',
+        bg: 'bg-orange-50 dark:bg-orange-950',
+        text: 'text-orange-700 dark:text-orange-300',
+        desc: '调用 notFound() 后的 fallback UI，替换 page 内容渲染。',
+        when: '仅在调用 notFound() 后显示',
     },
     {
-        name: "page.tsx",
-        color: "green",
-        badge: "bg-green-500",
-        border: "border-green-300 dark:border-green-700",
-        bg: "bg-green-50 dark:bg-green-950",
-        text: "text-green-700 dark:text-green-300",
-        desc: "路由段的叶节点，定义该 URL 对应的实际页面内容。",
-        when: "正常情况下显示",
+        name: 'page.tsx',
+        color: 'green',
+        badge: 'bg-green-500',
+        border: 'border-green-300 dark:border-green-700',
+        bg: 'bg-green-50 dark:bg-green-950',
+        text: 'text-green-700 dark:text-green-300',
+        desc: '路由段的叶节点，定义该 URL 对应的实际页面内容。',
+        when: '正常情况下显示',
     },
 ];
 
@@ -133,12 +133,8 @@ export default async function FileStructurePage() {
                                         {f.name}
                                     </span>
                                 </div>
-                                <p className={`text-xs ${f.text} mb-1`}>
-                                    {f.desc}
-                                </p>
-                                <p className="text-xs text-zinc-400">
-                                    显示时机：{f.when}
-                                </p>
+                                <p className={`text-xs ${f.text} mb-1`}>{f.desc}</p>
+                                <p className="text-xs text-zinc-400">显示时机：{f.when}</p>
                             </div>
                         ))}
                     </div>
@@ -170,8 +166,7 @@ export default async function FileStructurePage() {
                         <ErrorTrigger />
                     </div>
                     <p className="mt-2 text-xs text-zinc-400">
-                        提示：重新导航按钮会先显示 loading.tsx 骨架屏约 800ms，
-                        再渲染此页面内容。
+                        提示：重新导航按钮会先显示 loading.tsx 骨架屏约 800ms， 再渲染此页面内容。
                     </p>
                 </section>
             </div>
