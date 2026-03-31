@@ -1,7 +1,26 @@
-.next
-node_modules
-.cache
-coverage
-build
-dist
-public
+# 构建产物 
+.next/ 
+out/ 
+build/ 
+dist/ 
+
+# 依赖 
+node_modules/ 
+
+# 自动生成文件 
+next-env.d.ts 
+tsconfig.tsbuildinfo 
+pnpm-lock.yaml 
+
+# 静态资源与缓存
+public/
+.cache/
+coverage/
+
+# 日志 
+*.log 
+
+# AI 相关
+.claude 
+.agents 
+*.md
