@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 
 /**
  * template.tsx — 重挂载层（Client Component）
@@ -8,13 +8,8 @@ import { useEffect, useState } from 'react';
  * state 不保留，useEffect 重新执行。
  */
 export default function FileStructureTemplate({ children }: { children: React.ReactNode }) {
-    const [mountTime, setMountTime] = useState('');
-    const [mountCount, setMountCount] = useState(0);
-
-    useEffect(() => {
-        setMountTime(new Date().toLocaleTimeString('zh-CN'));
-        setMountCount((c) => c + 1);
-    }, []);
+    const mountTime = useMemo(() => new Date().toLocaleTimeString('zh-CN'), []);
+    const mountCount = 1;
 
     return (
         <div className="rounded-xl border-2 border-blue-400 dark:border-blue-600">

@@ -17,10 +17,9 @@ export default async function Page({ searchParams }: { searchParams: SearchParam
     const initPage = Math.max(1, Number(sp.page ?? '1') || 1);
     const initPageSize = [5, 10, 20].includes(Number(sp.ps)) ? Number(sp.ps) : 5;
     const initKeyword = sp.kw ?? '';
-    const initStatus =
-        (sp.status as any) === 'active' || (sp.status as any) === 'inactive'
-            ? (sp.status as any)
-            : 'all';
+    const statusStr = sp.status;
+    const initStatus: 'all' | 'active' | 'inactive' =
+        statusStr === 'active' || statusStr === 'inactive' ? statusStr : 'all';
     const initSortBy = sp.sortBy === 'name' ? 'name' : 'id';
     const initSortOrder = sp.order === 'desc' ? 'desc' : 'asc';
     const initTab = sp.tab === 'form' ? 'form' : sp.tab === 'server' ? 'server' : 'table';
@@ -31,9 +30,9 @@ export default async function Page({ searchParams }: { searchParams: SearchParam
             page: initPage,
             pageSize: initPageSize,
             keyword: initKeyword,
-            status: initStatus as any,
-            sortBy: initSortBy as any,
-            sortOrder: initSortOrder as any,
+            status: initStatus,
+            sortBy: initSortBy,
+            sortOrder: initSortOrder,
         }),
     ]);
 

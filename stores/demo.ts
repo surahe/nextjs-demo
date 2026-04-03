@@ -21,7 +21,7 @@ interface DemoState {
 
 export const useDemoStore = create<DemoState>()(
     devtools(
-        immer((set: any) => ({
+        immer((set) => ({
             count: 0,
             profile: {
                 name: 'Guest',
@@ -29,7 +29,7 @@ export const useDemoStore = create<DemoState>()(
             },
             increment: () =>
                 set(
-                    (state: any) => {
+                    (state) => {
                         state.count += 1;
                     },
                     false,
@@ -37,7 +37,7 @@ export const useDemoStore = create<DemoState>()(
                 ),
             updateTheme: (newTheme: 'light' | 'dark') =>
                 set(
-                    (state: any) => {
+                    (state) => {
                         if (state.profile) {
                             state.profile.preferences.theme = newTheme;
                         }
@@ -47,14 +47,14 @@ export const useDemoStore = create<DemoState>()(
                 ),
             reset: () =>
                 set(
-                    (state: any) => {
+                    (state) => {
                         state.count = 0;
                         state.profile = null;
                     },
                     false,
                     'demo/reset',
                 ),
-        })) as any,
+        })),
         {
             name: 'DemoStore',
             enabled: !ENV.IS_PRODUCTION,

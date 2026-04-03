@@ -109,10 +109,10 @@ function TableTab({
         params.set('tab', 'table');
         params.set('page', String(next.page ?? page));
         params.set('ps', String(next.pageSize ?? pageSize));
-        params.set('kw', (next as any).keyword ?? keyword ?? '');
-        params.set('status', (next as any).status ?? status ?? 'all');
-        params.set('sortBy', (next as any).sortBy ?? sortBy);
-        params.set('order', (next as any).sortOrder ?? sortOrder);
+        params.set('kw', next.keyword ?? keyword ?? '');
+        params.set('status', next.status ?? status ?? 'all');
+        params.set('sortBy', next.sortBy ?? sortBy);
+        params.set('order', next.sortOrder ?? sortOrder);
         router.replace(`${pathname}?${params.toString()}`);
     }
 
