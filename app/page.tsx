@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Home() {
@@ -82,6 +81,32 @@ export default function Home() {
                                 </span>
                                 <span className="text-xs text-rose-600 dark:text-rose-400">
                                     useShallow · immer · persist · devtools · global state
+                                </span>
+                            </Link>
+                        </div>
+                    </section>
+                    <section className={sectionClass}>
+                        <p className="mb-3 text-sm font-medium tracking-wide text-zinc-500 uppercase">
+                            受保护路由 Demo
+                        </p>
+                        <div className="flex flex-col gap-3 sm:flex-row">
+                            <Link
+                                href="/login"
+                                className="flex flex-col gap-1 rounded-xl border border-amber-200 bg-amber-50 px-5 py-4 transition-colors hover:bg-amber-100 dark:border-amber-800 dark:bg-amber-950 dark:hover:bg-amber-900"
+                            >
+                                <span className="font-semibold text-amber-800 dark:text-amber-200">
+                                    登录页 →
+                                </span>
+                            </Link>
+                            <Link
+                                href="/dashboard"
+                                className="flex flex-col gap-1 rounded-xl border border-blue-200 bg-blue-50 px-5 py-4 transition-colors hover:bg-blue-100 dark:border-blue-800 dark:bg-blue-950 dark:hover:bg-blue-900"
+                            >
+                                <span className="font-semibold text-blue-800 dark:text-blue-200">
+                                    仪表盘 →
+                                </span>
+                                <span className="text-xs text-blue-600 dark:text-blue-400">
+                                    保护的仪表盘页面 · 未登录用户访问会重定向到登录页
                                 </span>
                             </Link>
                         </div>

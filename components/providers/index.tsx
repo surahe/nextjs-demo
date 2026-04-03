@@ -4,12 +4,15 @@
 
 import { Toaster } from 'sonner';
 import { NuqsAdapter } from 'nuqs/adapters/next';
+import { TooltipProvider } from '@/components/ui/tooltip';
 
 export function Providers({ children }: { children: React.ReactNode }) {
     return (
         <NuqsAdapter>
-            {children}
-            <Toaster position="top-right" richColors closeButton duration={3000} />
+            <TooltipProvider>
+                {children}
+                <Toaster position="top-right" richColors closeButton duration={3000} />
+            </TooltipProvider>
         </NuqsAdapter>
     );
 }

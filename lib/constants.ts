@@ -12,3 +12,13 @@ export const HEADERS = {
     /** 登录凭证 Cookie 名称 */
     TOKEN_COOKIE_NAME: 'session-token',
 } as const;
+
+/**
+ * 环境变量键名常量
+ */
+export const ENV_KEYS = {
+    TOKEN_COOKIE_NAME: 'NEXT_PUBLIC_TOKEN_COOKIE',
+    JWT_SECRET: 'JWT_SECRET',
+    JWT_EXPIRES_IN: 'JWT_EXPIRES_IN',
+    NODE_ENV: 'NODE_ENV',
+} as const;

@@ -3,8 +3,8 @@ import type { NextRequest } from 'next/server';
 import { HEADERS } from './lib/constants';
 import { ENV } from './lib/env';
 
-// 定义需要登录才能访问的路由前缀
-const protectedRoutes = ['/profile', '/settings'];
+// 未登录用户访问受保护页面 -> 重定向到登录页
+const protectedRoutes = ['/dashboard'];
 // 定义不需要登录才能访问的路由（如果用户已登录，访问这些页面会重定向到首页）
 const publicRoutes = ['/login', '/register'];
 

@@ -1,16 +1,10 @@
 'use client';
 
 import { useDemoStore } from '@/stores/demo';
-import { useAuthStore, type User } from '@/stores/auth';
+import { useAuthStore } from '@/stores/auth';
+import { buildMockUserInfo } from '@/mocks/auth';
 import { useShallow } from 'zustand/react/shallow';
 import Link from 'next/link';
-
-const MOCK_USER: User = {
-    id: 'user-123',
-    name: 'Sura Developer',
-    email: 'sura@example.com',
-    role: 'admin',
-};
 
 export default function ZustandDemoPage() {
     // Demo Store
@@ -25,12 +19,8 @@ export default function ZustandDemoPage() {
     const reset = useDemoStore((state) => state.reset);
 
     // Auth Store
-    const { user, isAuthenticated } = useAuthStore(
-        useShallow((state) => ({
-            user: state.user,
-            isAuthenticated: state.isAuthenticated,
-        })),
-    );
+    const user = useAuthStore((state) => state.user);
+    const isAuthenticated = Boolean(user);
     const login = useAuthStore((state) => state.login);
     const logout = useAuthStore((state) => state.logout);
     const updateUser = useAuthStore((state) => state.updateUser);
@@ -93,7 +83,7 @@ export default function ZustandDemoPage() {
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             {!isAuthenticated ? (
                                 <button
-                                    onClick={() => login(MOCK_USER)}
+                                    onClick={() => login(buildMockUserInfo())}
                                     className="flex items-center justify-center rounded-lg bg-indigo-600 px-4 py-3 font-medium text-white transition-colors hover:bg-indigo-700 active:bg-indigo-800"
                                 >
                                     模拟登录 (Login)
@@ -108,10 +98,10 @@ export default function ZustandDemoPage() {
                                     </button>
 
                                     <button
-                                        onClick={() => updateUser({ name: 'Sura (已更新)' })}
+                                        onClick={() => updateUser({ nickname: 'Sura (已更新)' })}
                                         className="flex items-center justify-center rounded-lg border border-zinc-300 bg-white px-4 py-3 font-medium text-zinc-700 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
                                     >
-                                        更新名字 (Update Name)
+                                        更新昵称 (Update Nickname)
                                     </button>
                                 </>
                             )}
