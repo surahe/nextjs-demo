@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
+import { persist, devtools, createJSONStorage } from 'zustand/middleware';
 
 import { ENV } from '@/lib/env';
 
@@ -12,37 +12,51 @@ interface AuthState {
     updateUser: (updates: Partial<UserInfo>) => void;
 }
 
+const noopStorage = {
+    getItem: () => null,
+    setItem: () => {},
+    removeItem: () => {},
+};
+
 export const useAuthStore = create<AuthState>()(
     devtools(
-        (set) => ({
-            user: null,
-            login: (userData: UserInfo) =>
-                set(
-                    () => ({
-                        user: userData,
-                    }),
-                    false,
-                    'auth/login',
-                ),
+        persist(
+            (set) => ({
+                user: null,
+                login: (userData: UserInfo) =>
+                    set(
+                        () => ({
+                            user: userData,
+                        }),
+                        false,
+                        'auth/login',
+                    ),
 
-            logout: () =>
-                set(
-                    () => ({
-                        user: null,
-                    }),
-                    false,
-                    'auth/logout',
-                ),
+                logout: () =>
+                    set(
+                        () => ({
+                            user: null,
+                        }),
+                        false,
+                        'auth/logout',
+                    ),
 
-            updateUser: (updates: Partial<UserInfo>) =>
-                set(
-                    (state) => ({
-                        user: state.user ? { ...state.user, ...updates } : null,
-                    }),
-                    false,
-                    'auth/updateUser',
+                updateUser: (updates: Partial<UserInfo>) =>
+                    set(
+                        (state) => ({
+                            user: state.user ? { ...state.user, ...updates } : null,
+                        }),
+                        false,
+                        'auth/updateUser',
+                    ),
+            }),
+            {
+                name: 'AuthStore',
+                storage: createJSONStorage(() =>
+                    typeof window !== 'undefined' ? localStorage : noopStorage,
                 ),
-        }),
+            },
+        ),
         {
             name: 'AuthStore',
             enabled: !ENV.IS_PRODUCTION,

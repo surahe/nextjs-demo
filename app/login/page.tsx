@@ -2,13 +2,13 @@
 
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useMemo, useState } from 'react';
+import { Suspense, useMemo, useState } from 'react';
 import { HttpError } from '@/lib/basic-request';
 import { http } from '@/lib/http';
 import { useAuthStore } from '@/stores/auth';
 import type { GetInfoResponse, LoginResponse } from '@/types/auth-api';
 
-export default function LoginPage() {
+function LoginPageContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const login = useAuthStore((state) => state.login);
@@ -143,5 +143,13 @@ export default function LoginPage() {
                 </div>
             </main>
         </div>
+    );
+}
+
+export default function LoginPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen bg-zinc-50 dark:bg-zinc-950" />}>
+            <LoginPageContent />
+        </Suspense>
     );
 }

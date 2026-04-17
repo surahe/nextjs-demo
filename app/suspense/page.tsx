@@ -46,9 +46,7 @@ export default function Home() {
             <div style={{ margin: '20px 0' }} />
 
             {/* 失败区块 */}
-            <Suspense fallback={<div>加载中...</div>}>
-                <FailBox />
-            </Suspense>
+            <Suspense fallback={<div>加载中...</div>}>{/* <FailBox /> */}</Suspense>
         </main>
     );
 }
