@@ -83,6 +83,17 @@ export default function Home() {
                                     useShallow · immer · persist · devtools · global state
                                 </span>
                             </Link>
+                            <Link
+                                href="/nuqs"
+                                className="flex flex-col gap-1 rounded-xl border border-cyan-200 bg-cyan-50 px-5 py-4 transition-colors hover:bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950 dark:hover:bg-cyan-900"
+                            >
+                                <span className="font-semibold text-cyan-800 dark:text-cyan-200">
+                                    nuqs URL 状态 →
+                                </span>
+                                <span className="text-xs text-cyan-700 dark:text-cyan-400">
+                                    useQueryState · useQueryStates · parser/cache API
+                                </span>
+                            </Link>
                         </div>
                     </section>
                     <section className={sectionClass}>
