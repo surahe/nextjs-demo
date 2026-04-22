@@ -1,9 +1,16 @@
+'use client';
 // app/(admin)/dashboard/page.tsx
+import { useEffect } from 'react';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { notify } from '@/lib/notify';
 
 // 仪表盘首页占位
 export default function DashboardPage() {
+    useEffect(() => {
+        notify.success('这是一条成功通知');
+    }, []);
+
     return (
         <section className="flex w-full flex-col gap-4">
             <Card style={{ boxShadow: 'unset' }}>
