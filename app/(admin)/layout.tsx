@@ -4,7 +4,7 @@ import { cookies } from 'next/headers';
 
 import { NavUser } from '@/components/sidebar/nav-user';
 import { AppSidebar } from '@/components/sidebar/app-sidebar';
-// import RouteBreadcrumb from '@/components/route-breadcrumb';
+import RouteBreadcrumb from '@/components/route-breadcrumb';
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 import { AuthStoreInitializer } from '@/components/auth-store-initializer';
 
@@ -27,7 +27,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
                 <SidebarInset>
                     <header className="bg-background border-sidebar-border sticky top-0 z-10 flex h-16 shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
                         <div className="flex items-center gap-2 px-4">
-                            {/* <RouteBreadcrumb /> */}
+                            <RouteBreadcrumb />
                         </div>
                         <div className="ml-auto pr-4">
                             <NavUser />
