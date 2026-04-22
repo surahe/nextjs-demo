@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import jwt from 'jsonwebtoken';
 import { ENV } from '@/lib/env';
+import { SERVER_ENV } from '@/lib/env.server';
 import { MOCK_AUTH_USER, buildMockUserInfo } from '@/mocks/auth';
 
 const DEFAULT_EXPIRES_IN = 60 * 60 * 24;
@@ -55,7 +56,7 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ code: 401, msg: '用户名或密码错误' }, { status: 401 });
         }
 
-        const secret = ENV.JWT_SECRET;
+        const secret = SERVER_ENV.JWT_SECRET;
         if (!secret) {
             return NextResponse.json(
                 { code: 500, msg: '服务器未配置 JWT_SECRET' },
@@ -64,7 +65,7 @@ export async function POST(request: NextRequest) {
         }
 
         // 4) 读取过期配置原值（可能是 "3600" 或 "1d" 这类字符串）
-        const expiresIn = ENV.JWT_EXPIRES_IN;
+        const expiresIn = SERVER_ENV.JWT_EXPIRES_IN;
         // 供 cookie 使用：cookie 的 maxAge 必须是秒数
         const expiresInSeconds = parseJwtExpiresInToSeconds(expiresIn);
         // 供 jwt.sign 使用：数字字符串转 number，其余保持如 "1d"/"15m" 这类格式。
